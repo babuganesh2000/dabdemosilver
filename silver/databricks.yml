@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=bundle_config_schema.json
+bundle:
+  name: silver
+  git:
+    branch: main
+
+workspace:
+  host: https://adb-4384855024378876.16.azuredatabricks.net/ #Update to your Dev Workspace host address
+  root_path: /Shared/${bundle.name}
+
+artifacts:
+  my-unique-artifact-123:
+    files:
+      - source: ./30_silver/finance_silver.py            
+    path: ./30_silver/
+    type: python
+
+                 
+targets:
+  dev:
+    default: true
+
+  prod:
+    workspace:
+      host: https://adb-841979271036285.5.azuredatabricks.net/ #Replace with the host address of your prod environment
+          
